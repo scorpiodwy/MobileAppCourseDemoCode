@@ -1,0 +1,15 @@
+In this practice, students are asked to develop a simple app with two buttons and two activities. The first activity is the main activity to show the basic and first interface of the app, and the second activity is the explanation content, named “About”. Both the buttons are on the main activity. Clicking the first button lead users to the “About” activity, and the second button is used to exit current running app.
+Develop Tutorial
+First of all, create a new Android project with any name you like and keeping others default. Then you will see the developing interface of Android studio. After opening the main layout for the main activity, you will see the default app interface, saying “Hello world”. 
+1.	First thing we need to do now is to change this welcoming speech to the name of your Android app, such as “Quiz1”. There are two ways to achieve the modification of text. The first one in “Design” mode, and the second one is in “Text” mode.
+2.	Move the “Quiz1” to the middle.
+3.	Adding a background picture in the center of the screen.
+4.	Then create two buttons on the main layout. The first one is “About”, and the second one is “Exit”. They are at the bottom of the screen.
+5.	Add function to “About” button. Create a new activity named “AboutActivity” with a new layout named “about_layout”.
+6.	Add explanation content to the AboutActivity.
+7.	Modify the MainActivity to implement the function of “About” button.
+8.	Modify the about_layout to make it better.
+9.	Modify the AndroidManifest.xml to make About as a dialog.
+
+
+
