@@ -1,4 +1,3 @@
-The video file is on the root folder, called video.3gp
 If you want to play the video in full-screen mode, you need to do following steps:
 1. Add a new activity to play the video, since the first activity is also used to host buttons for controlling music.
 2. Move the define of VideoView to the new activity.
