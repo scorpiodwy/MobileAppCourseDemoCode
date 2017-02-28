@@ -1,0 +1,52 @@
+The video file is on the root folder, called video.3gp
+If you want to play the video in full-screen mode, you need to do following steps:
+1. Add a new activity to play the video, since the first activity is also used to host buttons for controlling music.
+2. Move the define of VideoView to the new activity.
+3. Add one line before setContentView, setTheme(android.R.style.Theme_NoTitleBar_Fullscreen);
+4. Modify the layout of the new activity to make every width and height to "match_parent", including the RelativeLayout and the VideoView.
+5. Move the findViewById and setVideoPath to the new activity.
+6. Start the video.
+
+The Layout of the new activity is:
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="android.dwy.myapplication.Main2Activity">
+
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/videoView"
+        />
+
+</RelativeLayout>
+
+The Java code of the new activity is:
+package android.dwy.myapplication;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.VideoView;
+
+public class Main2Activity extends AppCompatActivity {
+
+    private VideoView video;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setTheme(android.R.style.Theme_NoTitleBar_Fullscreen);
+        setContentView(R.layout.activity_main2);
+
+        video = (VideoView) findViewById(R.id.videoView);
+        video.setVideoPath("/data/video.3gp");
+
+        video.start();
+    }
+}
