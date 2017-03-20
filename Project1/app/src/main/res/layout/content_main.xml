@@ -90,21 +90,20 @@
         android:id="@+id/textResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/viewCmp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="14dp"
         android:textColor="#ff6ec7"
-        android:text="result"
-        android:textSize="15sp" />
+        android:text="Result: "
+        android:textSize="15sp"
+        android:layout_below="@+id/btnSci"
+        android:layout_alignStart="@+id/viewCmp" />
 
     <TextView
         android:id="@+id/textCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textResult"
-        android:layout_alignParentBottom="true"
-        android:text="round:"
+        android:text="Round: "
         android:textColor="#ff2400"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:layout_below="@+id/textResult" />
 
 </RelativeLayout>

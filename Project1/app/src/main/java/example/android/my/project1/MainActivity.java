@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.PowerManager;
 import android.util.Log;
+import android.util.Xml;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,9 +21,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.EventListener;
 
@@ -76,7 +80,10 @@ public class MainActivity extends Activity {
 
 
         //play background music here
-        mp_background.start();
+        //mp_background.start();
+
+        String times = getGameCount();
+        count_tv.setText("Round: "+ times);
 
         //end
 
@@ -97,7 +104,7 @@ public class MainActivity extends Activity {
             count++;//
 
             //store times of game in device
-//            storeData(count+"");
+            storeData(count+"");
 
             switch (rand) {
                 /**
@@ -169,22 +176,40 @@ public class MainActivity extends Activity {
         }
     }
 
-//    public void storeData(String count)
-//    {
-//        FileOutputStream outputStream;
-//        Date date = new Date(System.currentTimeMillis());
-//        try {
-//            outputStream = openFileOutput("record.txt", Context.MODE_PRIVATE);
-//            outputStream.write(date.toString().getBytes());
-//            outputStream.write("    ".getBytes());
-//            outputStream.write(count.getBytes());
-//            outputStream.write(System.getProperty("line.separator").getBytes());
-//            outputStream.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    //Store data locally
+    public void storeData(String count)
+    {
+        FileOutputStream outputStream;
+        try {
+            outputStream = openFileOutput("record.txt", Context.MODE_PRIVATE);
+            outputStream.write(count.getBytes());
+            outputStream.write(System.getProperty("line.separator").getBytes());
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+
+    //get local data
+    private String getGameCount(){
+        FileInputStream inputStream;
+        String result = "";
+        try{
+            inputStream = openFileInput("record.txt");
+            InputStreamReader isr = new InputStreamReader(inputStream, "UTF-8");
+            BufferedReader reader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            while((result = reader.readLine()) != null){
+                sb.append(result).append("\n");
+            }
+            inputStream.close();
+            result = sb.toString();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
     //end
 
     @Override
