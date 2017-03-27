@@ -9,3 +9,4 @@ Project1 is the source code for Rock-Paper-Scissor game.
 MediaPlayer is the demo code for Audio&Video Chapter.
 03/20 Project 1 was modified by adding local data related codes.
 SQLite is the source code for SQLite demo.
+CPTester is the demo to read/write/delete Content Provider data, while GetCP is the demo to get Content Provider data.
